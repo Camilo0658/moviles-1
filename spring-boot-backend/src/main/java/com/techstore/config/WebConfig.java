@@ -12,7 +12,9 @@ public class WebConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
+        // No usamos cookies/sesiones, así que dejamos credentials en false
+        // para poder permitir cualquier origen ("*") sin conflictos.
+        corsConfiguration.setAllowCredentials(false);
         corsConfiguration.addAllowedOriginPattern("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod("GET");
