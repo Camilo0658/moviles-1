@@ -14,12 +14,13 @@ const fetcher = (url: string) =>
     return res.json();
   });
 
-const { data: products, error, isLoading, mutate } = useSWR<Product[]>(
-  `${API_BASE_URL}/products`,
-  fetcher,
-  {
-    revalidateOnFocus: false,
-  }
+export function ProductGrid() {
+  const { data: products, error, isLoading, mutate } = useSWR<Product[]>(
+    `${API_BASE_URL}/products`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   if (isLoading) {
